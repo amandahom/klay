@@ -1,8 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   const [gameTime, setGameTime] = useState(false);
@@ -12,28 +10,25 @@ const Home: NextPage = () => {
   const [second, setSecond] = useState(0);
 
   useEffect(() => {
-    const target = new Date("01/03/2021 17:29:59");
+    const targetDate = new Date("01/09/2022 17:30:00");
 
     const interval = setInterval(() => {
-      const now = new Date();
-      const difference = target.getTime() - now.getTime();
+      const currentDateTime = new Date();
+      const dateTimeDifference =
+        targetDate.getTime() - currentDateTime.getTime();
 
-      const day = Math.floor(difference / (1000 * 60 * 60 * 24));
-      // console.log("day", day);
-      setDay(day);
-
+      const day = Math.floor(dateTimeDifference / (1000 * 60 * 60 * 24));
       const hour = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        (dateTimeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
       );
-      // console.log("hour", hour);
+      const min = Math.floor(
+        (dateTimeDifference % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const sec = Math.floor((dateTimeDifference % (1000 * 60)) / 1000);
+
+      setDay(day);
       setHour(hour);
-
-      const min = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      // console.log("min", min);
       setMinute(min);
-
-      const sec = Math.floor((difference % (1000 * 60)) / 1000);
-      // console.log("sec", sec);
       setSecond(sec);
 
       if (day <= 0 && hour <= 0 && min <= 0 && sec <= 0) {
@@ -45,93 +40,73 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Klay Thompson Countdown</title>
         <meta name="description" content="Klay Thompson Countdown" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Klay Thompson Countdown</h1>
+      <main
+        className="mx-auto px-4 sm:px-6 bg-center bg-fixed bg-no-repeat bg-cover h-screen relative"
+        id="home-image"
+      >
+        <style jsx>{`
+          #home-image {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url(https://res.cloudinary.com/cub95/image/upload/v1641342177/abhishek-chandra-kXJksx1kdJ0-unsplash_1_i8wcc7.jpg);
+            opacity: 1;
+          }
+        `}</style>
+        <div className="pt-32">
+          <div className="text-center">
+            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+              <span className="block xl:inline">Klay Thompson </span>
+              <span className="block text-white xl:inline">Countdown</span>
+            </h1>
+            <p className="mt-3 text-base text-white sm:mt-5 sm:text-lg">
+              Because I can't wait and I'm bored.
+            </p>
+          </div>
 
-        <p className={styles.description}>
-          Because I can't wait and I'm bored.
-        </p>
-
-        {gameTime ? (
-          <>
-            <h1>Game Time.</h1>
-            <video autoPlay loop muted>
-              <source src="/party.mp4" />
-            </video>
-          </>
-        ) : (
-          <>
-            <div className="timer-wrapper">
-              <div className="timer-inner">
-                <div className="timer-segment">
-                  <span className="time">{day}</span>
-                  <span className="label">Days</span>
+          {gameTime ? (
+            <>
+              <h1>Game Time.</h1>
+              {/* <video autoPlay loop muted> */}
+              {/* <source src="/party.mp4" /> */}
+              {/* </video> */}
+            </>
+          ) : (
+            <>
+              <div className="text-center text-white pt-48">
+                <div className="inline-block p-10">
+                  <p className="text-7xl inline-block">{day}</p>
+                  <p className="text-base">Days</p>
                 </div>
-                <span className="divider">:</span>
-                <div className="timer-segment">
-                  <span className="time">{hour}</span>
-                  <span className="label">Hours</span>
+                <span className="text-7xl">:</span>
+                <div className="inline-block p-10">
+                  <p className="text-7xl inline-block">{hour}</p>
+                  <p className="text-base">Hours</p>
                 </div>
-                <span className="divider">:</span>
-                <div className="timer-segment">
-                  <span className="time">{minute}</span>
-                  <span className="label">Minutes</span>
+                <span className="text-7xl">:</span>
+                <div className="inline-block p-10">
+                  <p className="text-7xl inline-block">{minute}</p>
+                  <p className="text-base">Minutes</p>
                 </div>
-                <span className="divider">:</span>
-                <div className="timer-segment">
-                  <span className="time">{second}</span>
-                  <span className="label">Seconds</span>
+                <span className="text-7xl">:</span>
+                <div className="inline-block p-10">
+                  <p className="text-7xl inline-block">{second}</p>
+                  <p className="text-base">Seconds</p>
                 </div>
               </div>
-            </div>
-            <Image
-              alt="background image"
-              src="/image.webp"
-              layout="fill"
-              quality={100}
-            />
-          </>
-        )}
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            </>
+          )}
         </div>
       </main>
 
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -142,7 +117,7 @@ const Home: NextPage = () => {
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
-      </footer>
+      </footer> */}
     </div>
   );
 };
