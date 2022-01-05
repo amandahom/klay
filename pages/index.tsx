@@ -59,11 +59,16 @@ const Home: NextPage = () => {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            background-image: url(https://res.cloudinary.com/cub95/image/upload/v1641342177/abhishek-chandra-kXJksx1kdJ0-unsplash_1_i8wcc7.jpg);
+            background-image: url(https://res.cloudinary.com/cub95/image/upload/v1641354960/270333234_5280809635317491_6510822591476827720_n_1_yb0oxw.jpg);
             opacity: 1;
           }
+          @media only screen and (max-width: 600px) {
+            #home-image {
+              background-image: url(https://res.cloudinary.com/cub95/image/upload/v1641342177/abhishek-chandra-kXJksx1kdJ0-unsplash_1_i8wcc7.jpg);
+            }
+          }
         `}</style>
-        <div className="pt-36">
+        <div className="pt-36 lg:pr-96 lg:mr-32">
           <div className="text-center">
             <h1 className="text-4xl tracking-tight font-extrabold text-blue-900 sm:text-5xl md:text-6xl">
               <span className="block xl:inline">Klay Thompson </span>
