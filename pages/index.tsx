@@ -46,7 +46,10 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Klay Thompson Countdown</title>
-        <meta name="description" content="Klay Thompson Countdown" />
+        <meta
+          name="description"
+          content="A countdown that counts how long until Klay Thompson comes back to the Golden State Warriors."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -64,15 +67,15 @@ const Home: NextPage = () => {
           }
           @media only screen and (max-width: 600px) {
             #home-image {
-              background-image: url(https://res.cloudinary.com/cub95/image/upload/v1641342177/abhishek-chandra-kXJksx1kdJ0-unsplash_1_i8wcc7.jpg);
+              background-image: url(https://res.cloudinary.com/cub95/image/upload/v1641427823/8d4d25d91c2fdc3f31e71684dfd70935_r6c2re.jpg);
             }
           }
         `}</style>
-        <div className="pt-36 lg:pr-96 lg:mr-32">
+        <div className="pt-28 md:pt-36 lg:pr-96 lg:mr-32">
           <div className="text-center">
             <h1 className="text-4xl tracking-tight font-extrabold text-blue-900 sm:text-5xl md:text-6xl">
               <span className="block xl:inline">Klay Thompson </span>
-              <span className="block text-yellow-500  xl:inline">
+              <span className="block text-yellow-500 ext-blue-900  xl:inline">
                 Countdown
               </span>
             </h1>
@@ -85,7 +88,7 @@ const Home: NextPage = () => {
                 id="modal-id"
               >
                 <Confetti width={width} height={height} />
-                <div className="absolute bg-black opacity-80 inset-0 z-0"></div>
+                <div className="absolute bg-black opacity-40 inset-0 z-0"></div>
                 <div className="w-full max-w-lg p-4 sm:p-10 relative mx-4 md:mx-auto my-auto rounded-xl shadow-lg bg-white">
                   <div className="">
                     <div className="text-center p-10 flex-auto justify-center">
@@ -113,21 +116,29 @@ const Home: NextPage = () => {
             </>
           ) : (
             <>
-              <div className="text-center text-white pt-20 md:pt-16">
+              <div className="text-center text-white pt-2 md:pt-16">
                 <div className="inline-block p-4 md:p-10">
-                  <p className="text-5xl md:text-8xl inline-block">{day}</p>
+                  <p className="text-5xl sm:text-7xl md:text-8xl inline-block">
+                    {day}
+                  </p>
                   <p className="text-sm md:text-xl">Days</p>
                 </div>
                 <div className="inline-block p-4 md:p-10">
-                  <p className="text-5xl md:text-8xl inline-block">{hour}</p>
+                  <p className="text-5xl sm:text-7xl md:text-8xl inline-block">
+                    {hour}
+                  </p>
                   <p className="text-sm md:text-xl">Hours</p>
                 </div>
                 <div className="inline-block p-4 md:p-10">
-                  <p className="text-5xl md:text-8xl inline-block">{minute}</p>
+                  <p className="text-5xl sm:text-7xl md:text-8xl inline-block">
+                    {minute}
+                  </p>
                   <p className="text-sm md:text-xl">Minutes</p>
                 </div>
                 <div className="inline-block p-4 md:p-10">
-                  <p className="text-5xl md:text-8xl inline-block">{second}</p>
+                  <p className="text-5xl sm:text-7xl md:text-8xl inline-block">
+                    {second}
+                  </p>
                   <p className="text-sm md:text-xl">Seconds</p>
                 </div>
               </div>
